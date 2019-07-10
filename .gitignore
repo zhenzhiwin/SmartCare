@@ -1,0 +1,3 @@
+*.pyc
+docs_local/*
+__pycache__
