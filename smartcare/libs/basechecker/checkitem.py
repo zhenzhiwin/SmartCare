@@ -43,6 +43,7 @@ def exec_task(task):
     logfile = task['logfile']
     for itemclass in task['checkitems']:
         item = itemclass()
+        #print(item, logfile)
         results.append(exec_checkitem(item, logfile))
 
     task['results'] = results
@@ -50,9 +51,13 @@ def exec_task(task):
     return results
 
 def exec_checkitem(item, logfile):
+    hostname = os.path.basename(logfile).split('.')[0]
     item.init_parser()
     blk = item.extract_log(logfile)
     result = item.check_status(blk)
+
+    if not result.hostname:
+        result.hostname = hostname
 
     return result
 
