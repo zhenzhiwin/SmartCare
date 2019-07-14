@@ -8,6 +8,7 @@ ResultInfo      保存检查结果和相关信息的类，用于传递信息给�
 """
 import os
 import json
+import time
 import logging
 from libs.basechecker.logparser import FsmParser
 
@@ -38,17 +39,18 @@ def extract_textblock(logfile, start_mark, end_mark=None):
                 buf.append(line)
     return buf    
 
-def exec_task(task):
+def exec_task():
     results = []
-    logfile = task['logfile']
-    for itemclass in task['checkitems']:
+    task.datetime = time.ctime()
+    logfile = task.logfile
+    for itemclass in task.checkitems:
         item = itemclass()
         #print(item, logfile)
         results.append(exec_checkitem(item, logfile))
 
-    task['results'] = results
+    task.results = results
     
-    return results
+    return task
 
 def exec_checkitem(item, logfile):
     hostname = os.path.basename(logfile).split('.')[0]
@@ -87,6 +89,9 @@ class ResultInfo(object):
         """
         return json.dumps(self.__dict__, indent=indent)
 
+    def __repr__(self):
+        return "ResultInfo({hostname},{name})".format(**self.__dict__)
+        
 class BaseCheckItem(object):
     """Base Class for StatusChecker
     all the status checker should be the subClass of this.

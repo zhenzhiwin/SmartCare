@@ -36,7 +36,7 @@
         </div>
         <!-- /.container -->
     </nav>
-{% endblock %}    
+{% endblock navbar %}    
 
 
 {% block container %}
@@ -46,15 +46,55 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">MME状态检查报告
-                    <small>2019.7.10 15:12:22</small>
+                <h1 class="page-header">MME {{task.hostname}} 状态检查报告
+                    <small>{{task.datetime}}</small>
                 </h1>
             </div>
         </div>
         <!-- /.row -->
 
-    
+        <div class="row">
+            <!-- Sidebar Column -->
+            <div class="col-md-3">
+                <h4> MME List </h4>
+                <div class="list-group">
+                    {%- for host in hostlist %}
+                    <a href="mme_report_{{host}}.html" class="list-group-item">{{host}}</a>
+                    {% endfor -%}
+                </div>
+            </div>        
+        
+       <div class="col-md-9">
+           <h3>1. 系统状态</h3>         
+           <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+               {% for result in task.results %}
+               <div class="panel {{result.panel_status}}">
+                <div class="panel-heading" role="tab">
+                  <h4 class="panel-title pull-left">
+                  {{result.name}}
+                  <i class="fa {{result.status_icon}}" style="font-size:22px;color:{{result.status_color}};"></i>
+                  </h4>
+                  
+                  <a class="collapsed pull-right" data-toggle="collapse" data-parent="#accordion" href="#checkitem{{loop.index}}">
+                  <i class="fa fa-angle-double-down" style="font-size:20px;"></i>
+                  </a>
+                  <div class="clearfix"></div>
+                </div>
+                
+                <div id="checkitem{{loop.index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading">
+                  <div class="panel-body">
+                    <p>{{result.description}}</p>
+                    {{ result.stats }}
+                  </div>
+                </div>
+              </div>           
+              {% endfor %} 
+           </div> <!-- pannel-group -->
+           <h3>2. 接口状态 </h3>
+           
+        </div><!-- page column -->
+        
+        
+        </div> <!-- sidebar row -->
     </div> <!-- Page Content -->
-    
-
 {% endblock %}

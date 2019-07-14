@@ -1,11 +1,12 @@
 #! coding: utf8
 import os
 import json
+import time
 import logging
 from libs.basechecker.checkitem import BaseCheckItem, ResultInfo
-from libs.basechecker.checkitem import exec_task
+from libs.basechecker.checkitem import exec_task, exec_checkitem
 
-from .configer import BASE_PATH
+from .configer import BASE_PATH, LOGFILE_PATH
 from .configer import checking_rules
 
 class FlexinsUnitStatus(BaseCheckItem):
@@ -62,30 +63,50 @@ class FlexinsCpuloadStatus(BaseCheckItem):
 
         return results
 
+class CheckTask(object):
+    def __init__(self, hostname=None, name=None, checkitems=None, logfile=None):
+        self.name = name
+        self.hostname = hostname
+        self.logfile = logfile
+        self.task_time = None
+        self.checkitems_list = None
+        self.status = 'UNKNOWN'
+
+        self.checkitems = []
+        self.results = []
+
+    def execute(self, checkitems, logfile=None):
+        if not logfile:
+            logfile = "%s.stats" % self.hostname
+            logfile = os.path.join(LOGFILE_PATH, logfile)
+        
+        #results = []
+        self.datetime = time.ctime()
+
+        for itemclass in checkitems:
+            item = itemclass()
+            #print(item, logfile)
+            self.results.append(exec_checkitem(item, logfile))
+        
+        return self
+
+    def info(self):
+        return self.__dict__
+
 def print_task_result(result, detail=False):
     if not detail:
         result.__dict__.pop('data')
 
     print(result.to_json(indent=2))
 
-def run_task(logfile):
-    task = {}
-    task['checkitems'] = [FlexinsUnitStatus, FlexinsCpuloadStatus]
-    task['logfile'] = logfile
+def run_task(hostname=None, logfile=None):
+    task = CheckTask(hostname=hostname)
+    checkitems = [FlexinsUnitStatus, FlexinsCpuloadStatus]
 
-    results = exec_task(task)
-
-    return results
-
-def test_task(logfile):
-    results = run_task(logfile)
-
-    for r in results:
-        print(r.name)
-        print_task_result(r)
-
-    return results
+    task.execute(checkitems)
     
+    return task
+
 def test_checkitem(logfile):
     item = FlexinsUnitStatus()
     result = exec_checkitem(item,logfile)
@@ -98,9 +119,8 @@ def test_checkitem(logfile):
     print(result.description)
 
 if __name__ == "__main__":
-    from .configer import test_logfile
-
-    if test_logfile: #如果configer文件里配置了test_logfile, 则仅分析指定的一个log文件
-        test_task(test_logfile)
-    else:
-        run_tasks(BASE_PATH) #对BASE_PATH目录下的所有log文件进行分析。
+    from .configer import mme_list
+    print(mme_list)
+    task=run_task(hostname="HZMME48BNK")
+    print("Task: {hostname}, {datetime},{status}".format(**task.info()))
+    print("Result: {}".format(task.results))

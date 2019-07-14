@@ -12,37 +12,44 @@ from .configer import BASE_PATH, HTML_REPORT_PATH
 def save_report(hostname, html):
     filename = "mme_report_%s.html" % hostname
     output_file = os.path.join(HTML_REPORT_PATH, filename)
-    with open(output_file,'w', encoding='utf8') as fp:
+    with open(output_file,'w+', encoding='utf8') as fp:
         fp.write(html)
 
-def make_report(data, template_name, env):
+    return output_file
+
+def make_report(env, template_name, **kwargs):
     tmpl = env.get_template(template_name)
-    html = tmpl.render(**data)
+    html = tmpl.render(**kwargs)
 
     return html
 
+def reformat_data(data):
+    for r in data:
+
+        if r.status.lower() == "passed":
+            r.panel_status = "panel-success"
+            r.status_icon = "fa-check-circle"
+            r.status_color = 'green'
+        else:
+            r.panel_status = "panel-warning"
+            r.status_icon = "fa-exclamation-circle"
+            r.status_color = 'red'
+    return data
+
 if __name__ == "__main__":
-    from .checkers import test_task
-    from .configer import test_logfile
+    from .checkers import run_task
+    from .configer import mme_list
 
     template_dir = os.path.join(BASE_PATH, 'html_templates')
     env = Environment(loader=FileSystemLoader(template_dir))
-    
-    if test_logfile:
-        data = test_task(test_logfile)
-    else:
-        print("no logfile specified.")
-        exit(1)
 
-    print("len of data: %s" % len(data))
 
-    #get the first task's reuslt and make a report for it.
-    result = data[0]
-    print(result)
-    data = result.__dict__
-    html = make_report(data, 'mme_report.html',env)
-
-    if len(html)>0:
-        saved_filename=save_report(result.hostname, html)
-        print("report was saved to %s" % saved_filename)
+    for host in ["HZMME48BNK",'HZMME49BNK']:
+        task = run_task(hostname=host)
+        task.results = reformat_data(task.results)
+        
+        html = make_report(env, 'mme_report.html', task=task,hostlist=mme_list) 
+        if len(html)>0:
+            saved_filename=save_report(task.hostname, html)
+            print("report was saved to %s" % saved_filename)
 
