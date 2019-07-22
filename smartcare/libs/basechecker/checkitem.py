@@ -10,7 +10,7 @@ import os
 import json
 import time
 import logging
-from libs.basechecker.logparser import FsmParser
+from smartcare.libs.basechecker.logparser import FsmParser
 
 
 def extract_textblock(logfile, start_mark, end_mark=None):

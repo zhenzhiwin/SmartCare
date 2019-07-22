@@ -3,10 +3,10 @@ import os
 import json
 import time
 import logging
-from libs.basechecker.checkitem import BaseCheckItem, ResultInfo
-from libs.basechecker.checkitem import exec_task, exec_checkitem
+from smartcare.libs.basechecker.checkitem import BaseCheckItem, ResultInfo
+from smartcare.libs.basechecker.checkitem import exec_checkitem
 
-from .configer import BASE_PATH, LOGFILE_PATH
+from .configer import BASE_PATH
 from .configer import checking_rules
 
 class FlexinsUnitStatus(BaseCheckItem):
@@ -14,11 +14,16 @@ class FlexinsUnitStatus(BaseCheckItem):
     检查mme所有单元的状态，统计出WO-EX和SP-EX的单元数量，以及异常单元的数量
     """
   
+    #本模块检查命令ZUSI的输出。 分析模块parser会从log文件里抽取“===ZUSI”开始
+    #到“COMMAND EXECUTED”之间的所有log进行分析
     check_cmd = "ZUSI"
     base_path = BASE_PATH
+    #指定用于TextFSM分析的模板。
     fsm_template_name = "flexins_usi.fsm"
 
     def check_status(self, logbuf=None):
+        #fsm_parser使用TextFSM对log进行分析并提取数据。也可以使用其他方式来分析。
+        #只需要把分析结果返回给self.status_data即可
         self.status_data = self.fsm_parser.parse(logbuf=logbuf)
         
         hostname = self.status_data[0]['host']
@@ -52,43 +57,59 @@ class FlexinsCpuloadStatus(BaseCheckItem):
         hostname = self.status_data[0]['host']
         results = ResultInfo(**self.info)
         overload_units = []
+        results.stats = []
         for s in self.status_data:
             if int(s['cpuload']) > checking_rules['cpuload'][0]:
                 results.status = 'Failed'
                 overload_units.append(s['unit'])
-        
+            results.stats.append((s['unit'],s['cpuload']))
+
         results.status = (len(overload_units)==0) and "Passed" or "Failed"
-        results.stats = overload_units
+        results.error = overload_units
         results.data = self.status_data
 
         return results
 
-class CheckTask(object):
+class Task(object):
+    """Class for collect and execute the check list/items.
+    """
     def __init__(self, hostname=None, name=None, checkitems=None, logfile=None):
         self.name = name
         self.hostname = hostname
-        self.logfile = logfile
+        self.logfile_pattern = "{}.stats"
         self.task_time = None
         self.checkitems_list = None
         self.status = 'UNKNOWN'
 
+        self.logfile_dir = ''
         self.checkitems = []
         self.results = []
 
-    def execute(self, checkitems, logfile=None):
+    def execute(self, checkitems=None, logfile=None):
         if not logfile:
-            logfile = "%s.stats" % self.hostname
-            logfile = os.path.join(LOGFILE_PATH, logfile)
+            logfile = self.logfile_pattern.format(self.hostname)
+            logfile = os.path.join(self.logfile_dir, logfile)
         
-        #results = []
+        if checkitems:
+            self.checkitems = checkitems
+
         self.datetime = time.ctime()
 
-        for itemclass in checkitems:
+        for itemclass in self.checkitems:
             item = itemclass()
             #print(item, logfile)
             self.results.append(exec_checkitem(item, logfile))
         
         return self
+
+    def load_checkitems(self, item_namelist, module="checkers"):
+        """import the checkitems from 'module_name' by name in 'item_namelist'
+
+        """
+        logging.info("Only support FlexinsUnitStatus and FlexinsCpuloadStatus now.")
+        self.checkitems = [FlexinsUnitStatus, FlexinsCpuloadStatus]
+
+        return ['FlexinsUnitStatus', 'FlexinsCpuloadStatus']
 
     def info(self):
         return self.__dict__
@@ -121,6 +142,7 @@ def test_checkitem(logfile):
 if __name__ == "__main__":
     from .configer import mme_list
     print(mme_list)
+    print("Below is the check result of HZMME48BNK:")
     task=run_task(hostname="HZMME48BNK")
     print("Task: {hostname}, {datetime},{status}".format(**task.info()))
     print("Result: {}".format(task.results))
