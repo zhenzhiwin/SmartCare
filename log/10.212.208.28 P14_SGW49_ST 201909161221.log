@@ -1,0 +1,825 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ENTER USERNAME < SYSTEM
+
+ENTER PASSWORD < *********
+
+MGW       SGSNGM49                  2019-09-16  12:21:40
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                       WELCOME TO THE IPA2800 SERIES DIALOGUE
+
+
+
+
+
+MAIN LEVEL COMMAND <___>
+< ZNE?
+
+
+LOADING PROGRAM VERSION 8.47-0
+
+MGW       SGSNGM49                  2019-09-16  12:21:59
+
+
+
+          SIGNALLING NETWORK STATE INTERROGATION COMMANDS
+
+
+          ?  ..... DISPLAY MENU
+          R: ..... INTERROGATE SIGNALLING ROUTE SET STATES
+          S: ..... INTERROGATE SIGNALLING LINK SET STATES
+          L: ..... INTERROGATE SIGNALLING LINK STATES
+          T: ..... INTERROGATE NETWORK ITEM STATES
+          O: ..... INTERROGATE SIGNALLING POINT LOAD SHARING
+          P: ..... INTERROGATE PROHIBITED STP MESSAGES
+          J: ..... RUN SIGNALLING ROUTING TEST
+          Z; ..... RETURN TO MAIN LEVEL
+
+
+
+
+
+
+SIGNALLING NETWORK STATE INTERROGATION COMMAND <NE_>
+< L
+
+/* DATA UNITS:
+
+   SIGNALLING LINK NUMBERS:
+   DISPLAY MODE;             */
+
+NEL:;
+
+MGW       SGSNGM49                  2019-09-16  12:22:17
+
+SIGNALLING LINK STATES
+
+TDM BASED LINKS (Q703)
+======================
+                            LINK              LOG               EXTERN      BIT
+ LINK LINK SET              STATE      UNIT   TERM ETGR      TF PCM-TSL     RATE
+ ==== ===================== ======     =========== ============ ================
+  100   20 LSTP3            AV-EX      ISU-1     0 ETGR-64    0  256-01&&31 1984
+  101   20 LSTP3            AV-EX      ISU-2     0 ETGR-66    0  264-01&&31 1984
+  200   21 LSTP5            AV-EX      ISU-3     0 ETGR-0     0    0-01&&31 1984
+  201   21 LSTP5            AV-EX      ISU-4     0 ETGR-8     0   32-01&&31 1984
+  202   21 LSTP5            AV-EX      ISU-1     2 ETGR-16    0   64-01&&31 1984
+  203   21 LSTP5            AV-EX      ISU-2     1 ETGR-24    0   96-01&&31 1984
+  300   22 LSTP6            AV-EX      ISU-5     0 ETGR-4     0   16-01&&31 1984
+  301   22 LSTP6            AV-EX      ISU-6     0 ETGR-12    0   48-01&&31 1984
+  302   22 LSTP6            AV-EX      ISU-3     1 ETGR-20    0   80-01&&31 1984
+  303   22 LSTP6            AV-EX      ISU-4     1 ETGR-28    0  112-01&&31 1984
+  400   23 LSTP4            AV-EX      ISU-7     0 ETGR-65    0  260-01&&31 1984
+  401   23 LSTP4            AV-EX      ISU-1     1 ETGR-67    0  268-01&&31 1984
+
+M3UA BASED LINKS
+================
+ M3UA                          ASSOCIATION  LINK
+ LINK  LINK SET                SET          STATE
+ ====  =====================   ===========  ======
+    1    16 SGN54                0          AV-EX     
+    2    17 SGN55                1          AV-EX     
+    3    18 SGN56                2          AV-EX     
+    4    19 SGN57                3          AV-EX     
+
+COMMAND EXECUTED
+
+
+SIGNALLING NETWORK STATE INTERROGATION COMMAND <NE_>
+< ZNH?
+
+LOADING PROGRAM VERSION 7.5-0
+
+MGW       SGSNGM49                  2019-09-16  12:22:21
+
+
+
+
+          SCCP SUBSYSTEM STATE HANDLING COMMANDS
+
+
+          ?  ..... DISPLAY MENU
+          C: ..... CHANGE SUBSYSTEM STATE
+          D: ..... CHANGE SUBSYSTEM REPLICATION STATE
+          I: ..... INTERROGATE SUBSYSTEM STATE
+          J: ..... INTERROGATE SUBSYSTEM DISTRIBUTION DATA
+          Z; ..... RETURN TO MAIN LEVEL
+
+
+
+
+
+
+
+
+SCCP SUBSYSTEM STATE HANDLING COMMAND <NH_>
+< I;
+
+/*** SEMANTIC ERROR ***/ 
+/*** UNKNOWN PARAMETER ***/ 
+
+
+SCCP SUBSYSTEM STATE HANDLING COMMAND <NH_>
+< I
+
+/* DATA UNITS:
+
+   SIGNALLING NETWORK, SIGNALLING POINT CODES:
+   SUBSYSTEMS; */
+
+NHI::
+
+/*** SEMANTIC ERROR ***/ 
+/*** UNKNOWN PARAMETER ***/ 
+
+
+/* IDENTIFY SIGNALLING NETWORK:
+
+    NO SIGNALLING NETWORKS DEFINED */
+
+NHI:,
+
+/*** SEMANTIC ERROR ***/ 
+/*** UNKNOWN PARAMETER ***/ 
+
+
+/* IDENTIFY SIGNALLING NETWORK:
+
+    NO SIGNALLING NETWORKS DEFINED */
+
+NH
+
+SCCP SUBSYSTEM STATE HANDLING COMMAND <NH_>
+< ZOYI
+
+LOADING PROGRAM VERSION 8.10-0
+
+/* DATA UNITS:
+
+   ASSOCIATION SET IDENTIFICATION:
+   DISPLAYING TYPE;   */
+
+OYI::
+
+/* IDENTIFY DISPLAYING TYPE:
+
+   A ... ASSOCIATION SET DATA
+   H ... ASSOCIATION SET HEADER DATA
+
+   DEFAULT H */
+
+OYI::A
+
+/* EXECUTION  DETERMINATION:
+   ; .. COMMAND EXECUTION
+   N .. NO EXECUTION        */
+
+OYI::A:;
+
+MGW       SGSNGM49                  2019-09-16  12:22:48
+
+INTERROGATING ASSOCIATION SET DATA
+
+ASSOCIATION SET NAME   ASSOC SET ID   SCTP USER   ROLE
+--------------------   ------------   ---------   --------
+SGN54NA0                          0   M3UA        SERVER
+
+    ASSOC.         ASSOC ID  PARAMETER SET
+    IND    UNIT    IN UNIT   NAME             STATE
+    ---    ------- --------- ---------------- --------------------
+      0    ISU-1           2 IETF             ASP-ACTIVE          
+
+        SOURCE ADDRESS 1 . . . . . : 172.16.149.3                               
+        SOURCE ADDRESS 2 . . . . . : 172.16.149.19                              
+        SOURCE PORT  . . . . . . . : 16254
+        PRIMARY DEST. ADDRESS  . . : 172.16.54.3/29                             
+        SECONDARY DEST. ADDRESS  . : 172.16.54.11/29                            
+        DESTINATION PORT . . . . . : 2954
+        DATA STREAM COUNT  . . . . : 16
+
+    ASSOC.         ASSOC ID  PARAMETER SET
+    IND    UNIT    IN UNIT   NAME             STATE
+    ---    ------- --------- ---------------- --------------------
+      1    ISU-2           2 IETF             ASP-ACTIVE          
+
+        SOURCE ADDRESS 1 . . . . . : 172.16.149.4                               
+        SOURCE ADDRESS 2 . . . . . : 172.16.149.20                              
+        SOURCE PORT  . . . . . . . : 16254
+        PRIMARY DEST. ADDRESS  . . : 172.16.54.4/29                             
+        SECONDARY DEST. ADDRESS  . : 172.16.54.12/29                            
+        DESTINATION PORT . . . . . : 2954
+        DATA STREAM COUNT  . . . . : 16
+
+    ASSOC.         ASSOC ID  PARAMETER SET
+    IND    UNIT    IN UNIT   NAME             STATE
+    ---    ------- --------- ---------------- --------------------
+      2    ISU-3     ---     IETF             SCTP-DOWN           
+
+        SOURCE ADDRESS 1 . . . . . : 172.16.149.5                               
+        SOURCE ADDRESS 2 . . . . . : 172.16.149.21                              
+        SOURCE PORT  . . . . . . . : 16254
+        PRIMARY DEST. ADDRESS  . . : 172.16.54.5/29                             
+        SECONDARY DEST. ADDRESS  . : 172.16.54.13/29                            
+        DESTINATION PORT . . . . . : 2954
+        DATA STREAM COUNT  . . . . : 16
+
+    ASSOC.         ASSOC ID  PARAMETER SET
+    IND    UNIT    IN UNIT   NAME             STATE
+    ---    ------- --------- ---------------- --------------------
+      3    ISU-4     ---     IETF             SCTP-DOWN           
+
+        SOURCE ADDRESS 1 . . . . . : 172.16.149.6                               
+        SOURCE ADDRESS 2 . . . . . : 172.16.149.22                              
+        SOURCE PORT  . . . . . . . : 16254
+        PRIMARY DEST. ADDRESS  . . : 172.16.54.6/29                             
+        SECONDARY DEST. ADDRESS  . : 172.16.54.14/29                            
+        DESTINATION PORT . . . . . : 2954
+        DATA STREAM COUNT  . . . . : 16
+
+SPECIFICATION VERSION  . . : 1.0 (RFC)       
+TRAFFIC MODE . . . . . . . : LOAD-SHARE      
+ASP MESSAGES . . . . . . . : YES 
+REGISTRATION REQUEST . . . :  NO 
+SSNM MESSAGES BROADCAST  . :  NO 
+NETWORK APPEARANCE . . . . :   8
+ASP MESSAGES IN IPSP . . . :  NO 
+ROUTING CONTEXT  . . . . . : ---       
+FIRST DATA STREAM NUMBER . :   1 
+
+TACK ......................:   2 SECONDS 
+M3UA HB.INTERVAL...........:  15 SECONDS 
+
+ASSOCIATION SET NAME   ASSOC SET ID   SCTP USER   ROLE
+--------------------   ------------   ---------   --------
+SGN55NA0                          1   M3UA        SERVER
+
+    ASSOC.         ASSOC ID  PARAMETER SET
+    IND    UNIT    IN UNIT   NAME             STATE
+    ---    ------- --------- ---------------- --------------------
+      0    ISU-5           1 IETF             ASP-ACTIVE          
+
+        SOURCE ADDRESS 1 . . . . . : 172.16.149.7                               
+        SOURCE ADDRESS 2 . . . . . : 172.16.149.23                              
+        SOURCE PORT  . . . . . . . : 16255
+        PRIMARY DEST. ADDRESS  . . : 172.16.55.3/29                             
+        SECONDARY DEST. ADDRESS  . : 172.16.55.11/29                            
+        DESTINATION PORT . . . . . : 2955
+        DATA STREAM COUNT  . . . . : 16
+
+    ASSOC.         ASSOC ID  PARAMETER SET
+    IND    UNIT    IN UNIT   NAME             STATE
+    ---    ------- --------- ---------------- --------------------
+      1    ISU-6           1 IETF             ASP-ACTIVE          
+
+        SOURCE ADDRESS 1 . . . . . : 172.16.149.8                               
+        SOURCE ADDRESS 2 . . . . . : 172.16.149.24                              
+        SOURCE PORT  . . . . . . . : 16255
+        PRIMARY DEST. ADDRESS  . . : 172.16.55.4/29                             
+        SECONDARY DEST. ADDRESS  . : 172.16.55.12/29                            
+        DESTINATION PORT . . . . . : 2955
+        DATA STREAM COUNT  . . . . : 16
+
+    ASSOC.         ASSOC ID  PARAMETER SET
+    IND    UNIT    IN UNIT   NAME             STATE
+    ---    ------- --------- ---------------- --------------------
+      2    ISU-7     ---     IETF             SCTP-DOWN           
+
+        SOURCE ADDRESS 1 . . . . . : 172.16.149.9                               
+        SOURCE ADDRESS 2 . . . . . : 172.16.149.25                              
+        SOURCE PORT  . . . . . . . : 16255
+        PRIMARY DEST. ADDRESS  . . : 172.16.55.5/29                             
+        SECONDARY DEST. ADDRESS  . : 172.16.55.13/29                            
+        DESTINATION PORT . . . . . : 2955
+        DATA STREAM COUNT  . . . . : 16
+
+    ASSOC.         ASSOC ID  PARAMETER SET
+    IND    UNIT    IN UNIT   NAME             STATE
+    ---    ------- --------- ---------------- --------------------
+      3    ISU-8     ---     IETF             SCTP-DOWN           
+
+        SOURCE ADDRESS 1 . . . . . : 172.16.149.10                              
+        SOURCE ADDRESS 2 . . . . . : 172.16.149.26                              
+        SOURCE PORT  . . . . . . . : 16255
+        PRIMARY DEST. ADDRESS  . . : 172.16.55.6/29                             
+        SECONDARY DEST. ADDRESS  . : 172.16.55.14/29                            
+        DESTINATION PORT . . . . . : 2955
+        DATA STREAM COUNT  . . . . : 16
+
+SPECIFICATION VERSION  . . : 1.0 (RFC)       
+TRAFFIC MODE . . . . . . . : LOAD-SHARE      
+ASP MESSAGES . . . . . . . : YES 
+REGISTRATION REQUEST . . . :  NO 
+SSNM MESSAGES BROADCAST  . :  NO 
+NETWORK APPEARANCE . . . . :   8
+ASP MESSAGES IN IPSP . . . :  NO 
+ROUTING CONTEXT  . . . . . : ---       
+FIRST DATA STREAM NUMBER . :   1 
+
+TACK ......................:   2 SECONDS 
+M3UA HB.INTERVAL...........:  15 SECONDS 
+
+ASSOCIATION SET NAME   ASSOC SET ID   SCTP USER   ROLE
+--------------------   ------------   ---------   --------
+SGN56NA0                          2   M3UA        SERVER
+
+    ASSOC.         ASSOC ID  PARAMETER SET
+    IND    UNIT    IN UNIT   NAME             STATE
+    ---    ------- --------- ---------------- --------------------
+      0    ISU-1           1 IETF             ASP-ACTIVE          
+
+        SOURCE ADDRESS 1 . . . . . : 172.16.149.3                               
+        SOURCE ADDRESS 2 . . . . . : 172.16.149.19                              
+        SOURCE PORT  . . . . . . . : 16256
+        PRIMARY DEST. ADDRESS  . . : 172.16.56.3/29                             
+        SECONDARY DEST. ADDRESS  . : 172.16.56.11/29                            
+        DESTINATION PORT . . . . . : 2956
+        DATA STREAM COUNT  . . . . : 16
+
+    ASSOC.         ASSOC ID  PARAMETER SET
+    IND    UNIT    IN UNIT   NAME             STATE
+    ---    ------- --------- ---------------- --------------------
+      1    ISU-2           1 IETF             ASP-ACTIVE          
+
+        SOURCE ADDRESS 1 . . . . . : 172.16.149.4                               
+        SOURCE ADDRESS 2 . . . . . : 172.16.149.20                              
+        SOURCE PORT  . . . . . . . : 16256
+        PRIMARY DEST. ADDRESS  . . : 172.16.56.4/29                             
+        SECONDARY DEST. ADDRESS  . : 172.16.56.12/29                            
+        DESTINATION PORT . . . . . : 2956
+        DATA STREAM COUNT  . . . . : 16
+
+    ASSOC.         ASSOC ID  PARAMETER SET
+    IND    UNIT    IN UNIT   NAME             STATE
+    ---    ------- --------- ---------------- --------------------
+      2    ISU-3     ---     IETF             SCTP-DOWN           
+
+        SOURCE ADDRESS 1 . . . . . : 172.16.149.5                               
+        SOURCE ADDRESS 2 . . . . . : 172.16.149.21                              
+        SOURCE PORT  . . . . . . . : 16256
+        PRIMARY DEST. ADDRESS  . . : 172.16.56.5/29                             
+        SECONDARY DEST. ADDRESS  . : 172.16.56.13/29                            
+        DESTINATION PORT . . . . . : 2956
+        DATA STREAM COUNT  . . . . : 16
+
+    ASSOC.         ASSOC ID  PARAMETER SET
+    IND    UNIT    IN UNIT   NAME             STATE
+    ---    ------- --------- ---------------- --------------------
+      3    ISU-4     ---     IETF             SCTP-DOWN           
+
+        SOURCE ADDRESS 1 . . . . . : 172.16.149.6                               
+        SOURCE ADDRESS 2 . . . . . : 172.16.149.22                              
+        SOURCE PORT  . . . . . . . : 16256
+        PRIMARY DEST. ADDRESS  . . : 172.16.56.6/29                             
+        SECONDARY DEST. ADDRESS  . : 172.16.56.14/29                            
+        DESTINATION PORT . . . . . : 2956
+        DATA STREAM COUNT  . . . . : 16
+
+SPECIFICATION VERSION  . . : 1.0 (RFC)       
+TRAFFIC MODE . . . . . . . : LOAD-SHARE      
+ASP MESSAGES . . . . . . . : YES 
+REGISTRATION REQUEST . . . :  NO 
+SSNM MESSAGES BROADCAST  . :  NO 
+NETWORK APPEARANCE . . . . :   8
+ASP MESSAGES IN IPSP . . . :  NO 
+ROUTING CONTEXT  . . . . . : ---       
+FIRST DATA STREAM NUMBER . :   1 
+
+TACK ......................:   2 SECONDS 
+M3UA HB.INTERVAL...........:  15 SECONDS 
+
+ASSOCIATION SET NAME   ASSOC SET ID   SCTP USER   ROLE
+--------------------   ------------   ---------   --------
+SGN57NA0                          3   M3UA        SERVER
+
+    ASSOC.         ASSOC ID  PARAMETER SET
+    IND    UNIT    IN UNIT   NAME             STATE
+    ---    ------- --------- ---------------- --------------------
+      0    ISU-5           3 IETF             ASP-ACTIVE          
+
+        SOURCE ADDRESS 1 . . . . . : 172.16.149.7                               
+        SOURCE ADDRESS 2 . . . . . : 172.16.149.23                              
+        SOURCE PORT  . . . . . . . : 16257
+        PRIMARY DEST. ADDRESS  . . : 172.16.57.3/29                             
+        SECONDARY DEST. ADDRESS  . : 172.16.57.11/29                            
+        DESTINATION PORT . . . . . : 2957
+        DATA STREAM COUNT  . . . . : 16
+
+    ASSOC.         ASSOC ID  PARAMETER SET
+    IND    UNIT    IN UNIT   NAME             STATE
+    ---    ------- --------- ---------------- --------------------
+      1    ISU-6           3 IETF             ASP-ACTIVE          
+
+        SOURCE ADDRESS 1 . . . . . : 172.16.149.8                               
+        SOURCE ADDRESS 2 . . . . . : 172.16.149.24                              
+        SOURCE PORT  . . . . . . . : 16257
+        PRIMARY DEST. ADDRESS  . . : 172.16.57.4/29                             
+        SECONDARY DEST. ADDRESS  . : 172.16.57.12/29                            
+        DESTINATION PORT . . . . . : 2957
+        DATA STREAM COUNT  . . . . : 16
+
+    ASSOC.         ASSOC ID  PARAMETER SET
+    IND    UNIT    IN UNIT   NAME             STATE
+    ---    ------- --------- ---------------- --------------------
+      2    ISU-7     ---     IETF             SCTP-DOWN           
+
+        SOURCE ADDRESS 1 . . . . . : 172.16.149.9                               
+        SOURCE ADDRESS 2 . . . . . : 172.16.149.25                              
+        SOURCE PORT  . . . . . . . : 16257
+        PRIMARY DEST. ADDRESS  . . : 172.16.57.5/29                             
+        SECONDARY DEST. ADDRESS  . : 172.16.57.13/29                            
+        DESTINATION PORT . . . . . : 2957
+        DATA STREAM COUNT  . . . . : 16
+
+    ASSOC.         ASSOC ID  PARAMETER SET
+    IND    UNIT    IN UNIT   NAME             STATE
+    ---    ------- --------- ---------------- --------------------
+      3    ISU-8     ---     IETF             SCTP-DOWN           
+
+        SOURCE ADDRESS 1 . . . . . : 172.16.149.10                              
+        SOURCE ADDRESS 2 . . . . . : 172.16.149.26                              
+        SOURCE PORT  . . . . . . . : 16257
+        PRIMARY DEST. ADDRESS  . . : 172.16.57.6/29                             
+        SECONDARY DEST. ADDRESS  . : 172.16.57.14/29                            
+        DESTINATION PORT . . . . . : 2957
+        DATA STREAM COUNT  . . . . : 16
+
+SPECIFICATION VERSION  . . : 1.0 (RFC)       
+TRAFFIC MODE . . . . . . . : LOAD-SHARE      
+ASP MESSAGES . . . . . . . : YES 
+REGISTRATION REQUEST . . . :  NO 
+SSNM MESSAGES BROADCAST  . :  NO 
+NETWORK APPEARANCE . . . . :   8
+ASP MESSAGES IN IPSP . . . :  NO 
+ROUTING CONTEXT  . . . . . : ---       
+FIRST DATA STREAM NUMBER . :   1 
+
+TACK ......................:   2 SECONDS 
+M3UA HB.INTERVAL...........:  15 SECONDS 
+
+COMMAND EXECUTED
+
+
+SCTP CONFIGURATION HANDLING COMMAND <OY_>
+< ZUSI;
+
+LOADING PROGRAM VERSION 6.15-1
+
+WORKING STATES OF UNITS             2019-09-16  12:22:53  
+
+ UNIT            PHYS   LOG    STATE  INFO
+ OMU-0           0000H  4002H  SP-EX  -
+ OMU-1           0001H  4002H  WO-EX  -
+ CM-0            0011H  4005H  WO-EX  -
+ CM-1            002EH  4005H  SP-EX  -
+ MXU-0           0016H  4242H  WO-EX  -
+ MXU-1           001BH  4242H  SP-EX  -
+ MXU-2           0031H  4243H  WO-EX  -
+ MXU-3           0033H  4243H  SP-EX  -
+ MXU-4           005DH  4244H  SP-EX  -
+ MXU-5           005FH  4244H  WO-EX  -
+ CACU-0          0013H  454DH  WO-EX  -
+ CACU-1          002FH  454DH  SP-EX  -
+ ISU-0           0006H  4552H  SP-EX  -
+ ISU-1           0015H  454FH  WO-EX  -
+ ISU-2           0029H  4553H  WO-EX  -
+ ISU-3           0030H  4554H  WO-EX  -
+ ISU-4           0034H  4555H  WO-EX  -
+ ISU-5           0060H  4556H  WO-EX  -
+ ISU-6           0061H  4557H  WO-EX  -
+ ISU-7           0062H  4551H  WO-EX  -
+ ISU-8           0063H  4550H  WO-EX  -
+ SFU-0           0004H  45FDH  SP-EX  -
+ SFU-1           0028H  45FDH  WO-EX  -
+ TBU-0                         WO-EX  -
+ TBU-1                         SP-EX  -
+ NIWU-0        >               WO-EX  5/20 
+ NIWU-1        >               WO-EX  5/20 
+ NIWU-2        >               WO-EX  5/20 
+ NIWU-3        >               WO-EX  5/20 
+ NIWU-4        >               WO-EX  5/20 
+ NIWU-5        >               WO-EX  5/20 
+ NIWU-6        >               WO-EX  5/20 
+ NIWU-7        >               WO-EX  5/20 
+ NIWU-8        >               WO-EX  4/20 
+ NIWU-9        >               WO-EX  4/20 
+ NIWU-10       >               WO-EX  4/20 
+ NIWU-11       >               WO-EX  4/20 
+ NIWU-12       >               WO-EX  4/20 
+ NIWU-13       >               WO-EX  4/20 
+ NIWU-14       >               WO-EX  4/20 
+ NIWU-15       >               WO-EX  4/20 
+ NIWU-16       >               WO-EX  8/20 
+
+NUMBER OF UNITS DISPLAYED = 42
+
+
+COMMAND EXECUTED
+
+
+WORKING STATE AND RESTART HANDLING COMMAND <US_>
+< ZAA?
+
+LOADING PROGRAM VERSION 4.13-0
+
+MGW       SGSNGM49                  2019-09-16  12:22:56
+
+
+
+
+          ACTIVE ALARMS HANDLING COMMANDS
+
+
+          ?  ..... DISPLAY MENU
+          N: ..... CANCEL ALARM ACCORDING TO CONSECUTIVE NUMBER
+          E: ..... CANCEL ALARM ACCORDING TO ALARM NUMBER OR OBJECT
+          P: ..... DISPLAY ACTIVE ALARMS
+          O: ..... DISPLAY ACTIVE ALARMS OF CERTAIN OBJECT
+          Z; ..... RETURN TO MAIN LEVEL
+
+
+
+
+
+
+
+
+ACTIVE ALARMS HANDLING COMMAND <AA_>
+< P;
+
+MGW       SGSNGM49                  2019-09-16  12:22:59
+
+ACTIVE ALARMS
+
+
+    (60358) SGSNGM49         1A002-00-16     PROCES       2019-09-12 02:00:02.53
+**  ALARM   OMU-1                                                               
+    2518    NO VALID FALLBACK COPY FOR DEFAULT PACKAGE                      
+    SW5ADM  OMU-1                                          
+    04 
+
+    (13784) SGSNGM49         1A001-00-6      QUAL         2013-08-22 14:11:12.56
+**  ALARM   CM-0                                                                
+    3407    MGW LICENCED FEATURE FAILURE                                    
+    MLPPRB  CM-0                                           
+    1037d 00 03 69d 
+
+    (48902) SGSNGM49         1A002-00-8      COMM         2017-06-06 23:35:19.16
+*   ALARM   ISU-3                                                               
+    3159    SCTP ASSOCIATION LOST                                           
+    S3CMAN  CM-0                                           
+    03 0002 0002 0000 31D3 
+
+    (63481) SGSNGM49         1A002-00-8      COMM         2017-08-29 23:30:29.74
+*   ALARM   ISU-3                                                               
+    3159    SCTP ASSOCIATION LOST                                           
+    S3CMAN  CM-0                                           
+    03 0000 0002 0000 31F1 
+
+    (48903) SGSNGM49         1A002-00-12     COMM         2017-06-06 23:35:19.98
+*   ALARM   ISU-4                                                               
+    3159    SCTP ASSOCIATION LOST                                           
+    S3CMAN  CM-0                                           
+    03 0002 0003 0000 31D4 
+
+    (63482) SGSNGM49         1A002-00-12     COMM         2017-08-29 23:30:30.55
+*   ALARM   ISU-4                                                               
+    3159    SCTP ASSOCIATION LOST                                           
+    S3CMAN  CM-0                                           
+    03 0000 0003 0000 31F2 
+
+    (49262) SGSNGM49         1A003-00-15     COMM         2017-06-08 23:37:01.58
+*   ALARM   ISU-7                                                               
+    3159    SCTP ASSOCIATION LOST                                           
+    S3CMAN  CM-0                                           
+    03 0003 0002 0000 31D8 
+
+    (01940) SGSNGM49         1A003-00-15     COMM         2017-09-22 00:12:45.72
+*   ALARM   ISU-7                                                               
+    3159    SCTP ASSOCIATION LOST                                           
+    S3CMAN  CM-0                                           
+    03 0001 0002 0000 31FF 
+
+    (49263) SGSNGM49         1A003-00-16     COMM         2017-06-08 23:37:02.80
+*   ALARM   ISU-8                                                               
+    3159    SCTP ASSOCIATION LOST                                           
+    S3CMAN  CM-0                                           
+    03 0003 0003 0000 31D9 
+
+    (01941) SGSNGM49         1A003-00-16     COMM         2017-09-22 00:12:47.87
+*   ALARM   ISU-8                                                               
+    3159    SCTP ASSOCIATION LOST                                           
+    S3CMAN  CM-0                                           
+    03 0001 0003 0000 3200 
+
+NUMBER OF ACTIVE ALARMS DISPLAYED:
+
+   ** ALARM  = 2
+    * ALARM  = 8
+
+TOTAL:       = 10
+
+COMMAND EXECUTED
+
+
+ACTIVE ALARMS HANDLING COMMAND <AA_>
+< ZAH?
+
+LOADING PROGRAM VERSION 5.18-0
+
+MGW       SGSNGM49                  2019-09-16  12:23:04
+
+
+
+
+
+          ALARM HISTORY HANDLING COMMANDS
+
+
+          ?  ..... DISPLAY MENU
+          P: ..... DISPLAY ALARM HISTORY
+          O: ..... DISPLAY ALARM HISTORY OF CERTAIN OBJECT
+          R: ..... RESIZE ALARM HISTORY
+          Z; ..... RETURN TO MAIN LEVEL
+
+
+
+
+
+
+
+
+ALARM HISTORY HANDLING COMMAND <AH_>
+< P;
+
+MGW       SGSNGM49                  2019-09-16  12:23:07
+
+ALARM HISTORY
+
+
+
+/*** PLEASE WAIT, RETRIEVING ALARM HISTORY! ***/
+
+
+
+HST (60444) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 00:05:37.51
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+HST (60445) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 00:16:02.18
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+HST (60446) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 00:35:52.03
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+HST (60447) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 00:45:45.74
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+HST (60448) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 00:51:05.39
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+HST (60449) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 00:55:58.63
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+HST (60450) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 01:00:52.59
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+HST (60451) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 01:05:39.25
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+HST (60452) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 01:10:58.36
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+HST (60453) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 01:50:49.42
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+HST (60454) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 03:25:44.45
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+HST (60455) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 03:40:57.04
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+HST (60456) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 04:15:37.30
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+HST (60457) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 04:26:04.45
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+HST (60458) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 05:50:49.69
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+HST (60459) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 08:35:44.49
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+HST (60460) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 09:40:51.51
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+HST (60461) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 10:41:31.08
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+HST (60462) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 11:55:42.71
+    DISTUR  OMU-1                                                               
+    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+    ROITER  OMU-1                                          
+    7d 
+
+NUMBER OF ALARM EVENTS DISPLAYED:
+
+     DISTUR  = 19    
+
+TOTAL:  SET  = 19    ;  CANCELED = 0     
+
+COMMAND EXECUTED
+
+
+ALARM HISTORY HANDLING COMMAND <AH_>
