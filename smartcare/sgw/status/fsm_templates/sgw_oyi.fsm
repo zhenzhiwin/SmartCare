@@ -1,0 +1,77 @@
+#MGW       SGSNGM49                  2019-09-16  12:22:48
+#
+#INTERROGATING ASSOCIATION SET DATA
+#
+#ASSOCIATION SET NAME   ASSOC SET ID   SCTP USER   ROLE
+#--------------------   ------------   ---------   --------
+#SGN54NA0                          0   M3UA        SERVER
+#
+#    ASSOC.         ASSOC ID  PARAMETER SET
+#    IND    UNIT    IN UNIT   NAME             STATE
+#    ---    ------- --------- ---------------- --------------------
+#      0    ISU-1           2 IETF             ASP-ACTIVE          
+#
+#        SOURCE ADDRESS 1 . . . . . : 172.16.149.3                               
+#        SOURCE ADDRESS 2 . . . . . : 172.16.149.19                              
+#        SOURCE PORT  . . . . . . . : 16254
+#        PRIMARY DEST. ADDRESS  . . : 172.16.54.3/29                             
+#        SECONDARY DEST. ADDRESS  . : 172.16.54.11/29                            
+#        DESTINATION PORT . . . . . : 2954
+#        DATA STREAM COUNT  . . . . : 16
+#
+#    ASSOC.         ASSOC ID  PARAMETER SET
+#    IND    UNIT    IN UNIT   NAME             STATE
+#    ---    ------- --------- ---------------- --------------------
+#      1    ISU-2           2 IETF             ASP-ACTIVE          
+#
+#        SOURCE ADDRESS 1 . . . . . : 172.16.149.4                               
+#        SOURCE ADDRESS 2 . . . . . : 172.16.149.20                              
+#        SOURCE PORT  . . . . . . . : 16254
+#        PRIMARY DEST. ADDRESS  . . : 172.16.54.4/29                             
+#        SECONDARY DEST. ADDRESS  . : 172.16.54.12/29                            
+#        DESTINATION PORT . . . . . : 2954
+#        DATA STREAM COUNT  . . . . : 16
+#
+#    ASSOC.         ASSOC ID  PARAMETER SET
+#    IND    UNIT    IN UNIT   NAME             STATE
+#    ---    ------- --------- ---------------- --------------------
+#      2    ISU-3     ---     IETF             SCTP-DOWN           
+#
+#        SOURCE ADDRESS 1 . . . . . : 172.16.149.5                               
+#        SOURCE ADDRESS 2 . . . . . : 172.16.149.21                              
+#        SOURCE PORT  . . . . . . . : 16254
+#        PRIMARY DEST. ADDRESS  . . : 172.16.54.5/29                             
+#        SECONDARY DEST. ADDRESS  . : 172.16.54.13/29                            
+#        DESTINATION PORT . . . . . : 2954
+#        DATA STREAM COUNT  . . . . : 16
+#
+#    ASSOC.         ASSOC ID  PARAMETER SET
+#    IND    UNIT    IN UNIT   NAME             STATE
+#    ---    ------- --------- ---------------- --------------------
+#      3    ISU-4     ---     IETF             SCTP-DOWN           
+#
+#        SOURCE ADDRESS 1 . . . . . : 172.16.149.6                               
+#        SOURCE ADDRESS 2 . . . . . : 172.16.149.22                              
+#        SOURCE PORT  . . . . . . . : 16254
+#        PRIMARY DEST. ADDRESS  . . : 172.16.54.6/29                             
+#        SECONDARY DEST. ADDRESS  . : 172.16.54.14/29                            
+#        DESTINATION PORT . . . . . : 2954
+#        DATA STREAM COUNT  . . . . : 16
+#TextFSM template for SGW OYI
+Value Filldown host (\w+\d+)
+Value setname (\w+\d+\w+\d+)
+Value asetid (\d+)
+Value suser (\w+)
+Value role (\w+)
+Value assid (\d+)
+Value unit (\w+-\d+)
+Value asidinu (\d+)
+Value psetname (\w+)
+Value stat (\w+-\w+)
+
+Start
+  ^MGW\s+${host}\s+
+  ^\s+${setname}\s+${asetid}\s+${suser}\s+${role}
+  ^\s+${assid}\s+${unit}\s+${asidinu}\s+${psetname}\s+${stat} -> Record
+
+#End of template

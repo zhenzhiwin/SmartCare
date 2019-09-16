@@ -1,0 +1,41 @@
+#MGW       SGSNGM49                  2019-09-16  12:22:17
+#
+#SIGNALLING LINK STATES
+#
+#TDM BASED LINKS (Q703)
+#======================
+#                            LINK              LOG               EXTERN      BIT
+# LINK LINK SET              STATE      UNIT   TERM ETGR      TF PCM-TSL     RATE
+# ==== ===================== ======     =========== ============ ================
+#  100   20 LSTP3            AV-EX      ISU-1     0 ETGR-64    0  256-01&&31 1984
+#  101   20 LSTP3            AV-EX      ISU-2     0 ETGR-66    0  264-01&&31 1984
+#  200   21 LSTP5            AV-EX      ISU-3     0 ETGR-0     0    0-01&&31 1984
+#  201   21 LSTP5            AV-EX      ISU-4     0 ETGR-8     0   32-01&&31 1984
+#  202   21 LSTP5            AV-EX      ISU-1     2 ETGR-16    0   64-01&&31 1984
+#  203   21 LSTP5            AV-EX      ISU-2     1 ETGR-24    0   96-01&&31 1984
+#  300   22 LSTP6            AV-EX      ISU-5     0 ETGR-4     0   16-01&&31 1984
+#  301   22 LSTP6            AV-EX      ISU-6     0 ETGR-12    0   48-01&&31 1984
+#  302   22 LSTP6            AV-EX      ISU-3     1 ETGR-20    0   80-01&&31 1984
+#  303   22 LSTP6            AV-EX      ISU-4     1 ETGR-28    0  112-01&&31 1984
+#  400   23 LSTP4            AV-EX      ISU-7     0 ETGR-65    0  260-01&&31 1984
+#  401   23 LSTP4            AV-EX      ISU-1     1 ETGR-67    0  268-01&&31 1984
+#TextFSM template for SGW NEL
+Value host (\w+\d+)
+Value link (\d+\s+\d+)
+Value set (\w+\d+)
+Value linkstate (\w+-\w+)
+Value unit (\w+-\d+)
+Value logterm (\d+)
+Value etgr (\w+-\d+)
+Value tf (d+)
+Value pcm (\d+-\d+&&\d+)
+Value bitr (\d+)
+
+Start
+  ^MGW\s+${host}\s+
+  ^TDM BASED LINKS->SignallingStatus
+
+SignallingStatus
+  ^\s+${link}\s+${set}\s+${linkstate}\s+${unit}\s+${logterm}\s+${etgr}\s+${tf}\s+${pcm}\s+${bitr} -> Record
+
+#End of template

@@ -1,0 +1,41 @@
+#AHP;
+#
+#MGW       SGSNGM49                  2019-09-16  12:23:07
+#
+#ALARM HISTORY
+#
+#
+#
+#/*** PLEASE WAIT, RETRIEVING ALARM HISTORY! ***/
+#
+#
+#
+#HST (60444) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 00:05:37.51
+#    DISTUR  OMU-1                                                               
+#    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+#    ROITER  OMU-1                                          
+#    7d 
+#
+#HST (60445) SGSNGM49         1A002-00-16     EQUIPM       2019-09-16 00:16:02.18
+#    DISTUR  OMU-1                                                               
+#    1569    CRITICAL LIMIT IN SECURITY REPORTING REACHED                    
+#    ROITER  OMU-1                                          
+#    7d 
+#TextFSM template for SGW AHP
+#
+Value id (\d+)
+Value host (\w+)
+Value loc ([\w\d-]+)
+Value type (\w+)
+Value Required unit (\w+-\d+)
+Value date (\d+-\d+-\d+\s+\d+:\d+:\d+\.\d+)
+Value alarmid (\d+)
+Value alarmtext ([\w\s]+)
+
+Start
+  ^ALARM HISTORY
+  ^HST\s+\(${id}\)\s+${host}\s+${loc}\s+${type}\s+${datetime}
+  ^\s+DISTUR\s+${unit}               
+  ^\s${alarmid}\s+${alarmtext} -> Record                                
+  
+#End of template

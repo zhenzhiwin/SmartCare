@@ -1,0 +1,49 @@
+#TextFSM template for parsing the output of command: `USI`
+# Example:
+#ZUSI;
+#
+#LOADING PROGRAM VERSION 6.15-1
+#
+#WORKING STATES OF UNITS             2019-09-16  12:22:53  
+#
+# UNIT            PHYS   LOG    STATE  INFO
+# OMU-0           0000H  4002H  SP-EX  -
+# OMU-1           0001H  4002H  WO-EX  -
+# CM-0            0011H  4005H  WO-EX  -
+# CM-1            002EH  4005H  SP-EX  -
+# MXU-0           0016H  4242H  WO-EX  -
+# MXU-1           001BH  4242H  SP-EX  -
+# MXU-2           0031H  4243H  WO-EX  -
+# MXU-3           0033H  4243H  SP-EX  -
+# MXU-4           005DH  4244H  SP-EX  -
+# MXU-5           005FH  4244H  WO-EX  -
+# CACU-0          0013H  454DH  WO-EX  -
+# CACU-1          002FH  454DH  SP-EX  -
+# ISU-0           0006H  4552H  SP-EX  -
+# ISU-1           0015H  454FH  WO-EX  -
+# ISU-2           0029H  4553H  WO-EX  -
+# ISU-3           0030H  4554H  WO-EX  -
+# ISU-4           0034H  4555H  WO-EX  -
+# ISU-5           0060H  4556H  WO-EX  -
+# ISU-6           0061H  4557H  WO-EX  -
+# ISU-7           0062H  4551H  WO-EX  -
+# ISU-8           0063H  4550H  WO-EX  -
+# SFU-0           0004H  45FDH  SP-EX  -
+# SFU-1           0028H  45FDH  WO-EX  -
+# TBU-0                         WO-EX  -
+# TBU-1                         SP-EX  -
+# NIWU-0        >               WO-EX  5/20 
+# NIWU-1        >               WO-EX  5/20 
+# NIWU-2        >               WO-EX  5/20 
+Value Filldown host (\w+)
+Value unit (\w+-\d+)
+Value status (\w+-\w+)
+
+Start
+  ^WORKING STATE OF UNITS -> UnitStatus
+  
+UnitStatus  
+  ^\s+${unit}\s+\w+\s+${status} -> Record
+ 
+  
+#End of template

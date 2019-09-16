@@ -6,7 +6,7 @@ BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 
 
 ##待分析的log文件保存路径
-LOGFILE_PATH = "/tmp/cache/"  #实际服务器上使用的目录
+#LOGFILE_PATH = "/tmp/cache/"  #实际服务器上使用的目录
 LOGFILE_PATH = "D:/git/SmartCare/log"  #window开发测试使用目录
 
 #生成报告的保存路径

@@ -1,0 +1,37 @@
+#AAP;
+#
+#MGW       SGSNGM49                  2019-09-16  12:22:59
+#
+#ACTIVE ALARMS
+#
+#
+#    (60358) SGSNGM49         1A002-00-16     PROCES       2019-09-12 02:00:02.53
+#**  ALARM   OMU-1                                                               
+#    2518    NO VALID FALLBACK COPY FOR DEFAULT PACKAGE                      
+#    SW5ADM  OMU-1                                          
+#    04 
+#
+#    (13784) SGSNGM49         1A001-00-6      QUAL         2013-08-22 14:11:12.56
+#**  ALARM   CM-0                                                                
+#    3407    MGW LICENCED FEATURE FAILURE                                    
+#    MLPPRB  CM-0                                           
+#    1037d 00 03 69d 
+#TextFSM template for SGW AAP
+#
+Value id (\d+)
+Value host (\w+)
+Value loc ([\w\d-]+)
+Value type (\w+)
+Value Required level (\*+)
+Value Required unit (\w+-\d+)
+Value date (\d+-\d+-\d+\s+\d+:\d+:\d+\.\d+)
+Value alarmid (\d+)
+Value alarmtext ([\w\s]+)
+
+Start
+  ^ACTIVE ALARMS
+  ^\s+\(${id}\)\s+${host}\s+${loc}\s+${type}\s+${datetime}
+  ^${level}\s+ALARM\s+${unit}               
+  ^\s${alarmid}\s+${alarmtext} -> Record                                
+  
+#End of template
